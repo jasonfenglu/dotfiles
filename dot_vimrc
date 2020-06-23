@@ -18,9 +18,13 @@ Plugin 'hdima/python-syntax'
 Plugin 'vim-latex/vim-latex'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'nvie/vim-flake8'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'pedrohdz/vim-yaml-folds'
 " Plugin 'davidhalter/jedi-vim'
 " Plugin 'kiteco/vim-plugin'
 " Plugin 'Valloric/YouCompleteMe'
+" Plugin 'firstmustok/Conque-Shell'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -36,16 +40,38 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-
+"
+set bg=dark
 set nu
 set hlsearch
 syntax on
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+set expandtab
+set tabstop=4
+set shiftwidth=4
+map <silent> <F9> :TlistToggle<cr> 
+
+" Git Gutter commands
+nmap ]c <Plug>(GitGutterNextHunk)
+nmap [c <Plug>(GitGutterPrevHunk)
+nmap \hs <Plug>(GitGutterStageHunk)
+nmap \hu <Plug>(GitGutterUndoHunk)
+nmap \hp <Plug>(GitGutterPreviewHunk)
+
+"YCM
+nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
 set showcmd
+set backspace=2
 
-let g:Tex_DefaultTargetFormat = 'pdf'
-let g:Tex_ViewRule_pdf = 'open -a Preview.app'
+let fortran_free_source=1 
+let fortran_fold=1
+set foldmethod=syntax
+set foldlevelstart=1
+set ruler
 
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+let g:jedi#auto_clolse_doc = 0
+set wildmode=longest,list,full
+set wildmenu
 
-set sw=4
-let g:typescript_indent_disable = 1
+autocmd FileType fortran setlocal shiftwidth=2 softtabstop=2 expandtab

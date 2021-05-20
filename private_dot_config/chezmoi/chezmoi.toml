@@ -1,2 +1,3 @@
+encryption = "gpg"
 [gpg]
-  recipient = "jianjang.feng@gmail.com"
+  recipient = "BD2789A552D58CFB!"

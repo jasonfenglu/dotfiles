@@ -20,6 +20,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'nvie/vim-flake8'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'pedrohdz/vim-yaml-folds'
+Plugin 'junegunn/vim-easy-align'
 " Plugin 'davidhalter/jedi-vim'
 " Plugin 'kiteco/vim-plugin'
 " Plugin 'Valloric/YouCompleteMe'
@@ -74,3 +75,6 @@ set wildmode=longest,list,full
 set wildmenu
 
 autocmd FileType fortran setlocal shiftwidth=2 softtabstop=2 expandtab
+
+nmap ga <Plug>(EasyAlign)
+

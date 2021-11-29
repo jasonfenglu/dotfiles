@@ -31,7 +31,8 @@ pw=''
 # Default values
 id=nersc			# Name of key file
 user=$USER			# Username
-sshdir=/Volumes/Keybase/private/jasonfenglu/nersc_key			# SSH directory
+# sshdir=/Volumes/Keybase/private/jasonfenglu/nersc_key			# SSH directory
+sshdir=~/.ssh/nersc
 scope="default"			# Default scope
 url="https://sshproxy.nersc.gov"	# hostname for reaching proxy
 
@@ -127,11 +128,11 @@ Usage () {
 }
 
 RetrievePWfromLPass() {
-	echo $(lpass show nersc.gov --password)
+	echo $(bw get password nersc.gov)
 }
 
 RetrieveOATHfromYubikey() {
-	echo $(ykman oath code -s nersc)
+	echo $(ykman oath accounts code -s nersc)
 }
 
 #############

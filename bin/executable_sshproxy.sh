@@ -35,6 +35,7 @@ user=$USER			# Username
 sshdir=~/.ssh/nersc
 scope="default"			# Default scope
 url="https://sshproxy.nersc.gov"	# hostname for reaching proxy
+cipher="LS0tLS1CRUdJTiBQR1AgTUVTU0FHRS0tLS0tCgpoUUVNQTcwbmlhVlMxWXo3QVFmL1RycXZ3aXFjTUVNQnlTQjFHZmZxd1FPV2tvdmRyNmtFcGRjSzZpaG90QjBXCk9wN3dHYmRxdnA2SlhNOUlscmFzZENjb2JPamlxYW5zeHNHNXplVnRyWk9uNFpOVTZId3JSUVBVRFpLS2Z1SXgKL2NlWGVTc24yRVBidlhHUE1pOE1jbVNDVzlWTDMzbWZxQXpGMjFxaDlEaVVvSDQ0THVzZ3QwcTJvL0Y4dkRlUQp4Wlo5d0djSDNJS3hwV3dOTTFsS25ZUG5MUjAvYm5uTk9uWjg0eWhJd2tBOCtMVVhzczJCNHU4bDVlS2gvRmovCm5Ud2ZxY2dEaWZUM3RzVm1RbThoTUlySm11SWRyN1lvczZJWktuTUVVTVB4L0UxaEQ5VHFvdUJjVTJMalhPTWkKd1EyQTlMNVVRREFFVHZqeWplclZQWmxyV2VnZm5lQjVmV2IxOW1yaHpkSlBBVWVOQlk2aERPeXgwelU4czFtSwpLbi9DejdVUkQ2TisxajVUcUFpYTBaa0RYMjJHN1g1UGsrZERJWGg2cXgwWE9rZ3NjZUY5SXV6emVTZ2hCMUgrClZpS1lOcEp2WEM0dVlKNEZRZmFwTWc9PQo9N3pEcQotLS0tLUVORCBQR1AgTUVTU0FHRS0tLS0tCg=="
 
 #############
 # Functions
@@ -128,7 +129,8 @@ Usage () {
 }
 
 RetrievePWfromLPass() {
-	echo $(bw get password nersc.gov)
+	#echo $(bw get password nersc.gov)
+    echo $(echo $cipher | base64 --decode | gpg -d 2>/dev/null)
 }
 
 RetrieveOATHfromYubikey() {
